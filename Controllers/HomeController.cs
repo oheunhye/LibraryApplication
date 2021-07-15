@@ -17,7 +17,7 @@ namespace LibraryApplication.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var books = new List<Book>();
+            List<Book> books = new List<Book>();
 
             #region Paging&Searching
             int totalCount = 0;
@@ -36,8 +36,8 @@ namespace LibraryApplication.Controllers
             {
                 //결과Row를 maxListCount만큼 가져옴
                 books = db.Books.OrderBy(x => x.Book_U)
-                                                .Skip((pageNum - 1) * maxListCount)
-                                                .Take(maxListCount).ToList();
+                                            .Skip((pageNum - 1) * maxListCount)
+                                            .Take(maxListCount).ToList();
 
                 totalCount = db.Books.Count();
             }
@@ -59,8 +59,8 @@ namespace LibraryApplication.Controllers
                 }
 
                 books = books.OrderBy(x => x.Book_U)
-                                    .Skip((pageNum - 1) * maxListCount)
-                                    .Take(maxListCount).ToList();
+                                        .Skip((pageNum - 1) * maxListCount)
+                                        .Take(maxListCount).ToList();
 
                 totalCount = books.Count();
             }
